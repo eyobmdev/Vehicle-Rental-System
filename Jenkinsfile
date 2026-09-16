@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'mcr.microsoft.com/playwright/python:v1.40.0-jammy'   // or a newer matching version
+            args '-u root --ipc=host'
+        }
+    }
 
     environment {
         DJANGO_ALLOW_ASYNC_UNSAFE = 'true'
@@ -18,7 +23,8 @@ pipeline {
                 python3 -m venv venv
                 . venv/bin/activate
                 pip install -r requirements.txt
-                playwright install chromium
+                # browsers + system deps are already present in the image
+                # playwright install chromium   # optional, can keep if you want
                 '''
             }
         }
@@ -35,10 +41,7 @@ pipeline {
     
     post {
         always {
-            // allowEmptyResults prevents the pipeline from failing just because no report was produced
             junit allowEmptyResults: true, testResults: 'junit.xml'
-            
-            // allowMissing: true so a failed setup stage doesn’t break the post action
             publishHTML([
                 allowMissing: true,
                 alwaysLinkToLastBuild: false,
