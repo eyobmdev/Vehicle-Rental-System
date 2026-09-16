@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright/python:v1.40.0-jammy'   // or a newer matching version
-            args '-u root --ipc=host'
-        }
-    }
+    agent any
 
     environment {
         DJANGO_ALLOW_ASYNC_UNSAFE = 'true'
@@ -23,8 +18,7 @@ pipeline {
                 python3 -m venv venv
                 . venv/bin/activate
                 pip install -r requirements.txt
-                # browsers + system deps are already present in the image
-                # playwright install chromium   # optional, can keep if you want
+                playwright install chromium
                 '''
             }
         }
