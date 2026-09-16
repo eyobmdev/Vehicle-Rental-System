@@ -7,6 +7,7 @@ class DurationRestrictionError(Exception):
 class InvalidStateTransitionError(Exception):
     pass
 
+
 class RentalCalculator:
     BASE_RATE = 50.0  # $50 per day
     YOUNG_DRIVER_SURCHARGE = 20.0  # $20 per day
