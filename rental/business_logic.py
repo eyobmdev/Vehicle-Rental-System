@@ -9,7 +9,7 @@ class InvalidStateTransitionError(Exception):
 
 class RentalCalculator:
     BASE_RATE = 50.0  # $50 per day
-    YOUNG_DRIVER_SURCHARGE = 15.0  # $20 per day
+    YOUNG_DRIVER_SURCHARGE = 20.0  # $20 per day
 
     def calculate_price(self, age: int, duration_days: int, is_premium: bool = False) -> float:
         # 1. Boundary Value & Equivalence Partitioning - Age
