@@ -1,7 +1,6 @@
 # Test Plan: Vehicle Rental System
 
 **Course:** Software Testing and Validation  
-**Group members:** Eyob Mulugeta (ATE/4778/14); Afomia Birhanu (ATE/2368/14)
 
 ## 1. Scope
 The scope of testing encompasses the core functionality of the new Vehicle Rental System web application. This includes:

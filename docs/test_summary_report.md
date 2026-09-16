@@ -1,7 +1,6 @@
 # Test Summary Report
 
 **Course:** Software Testing and Validation  
-**Group members:** Eyob Mulugeta (ATE/4778/14); Afomia Birhanu (ATE/2368/14)
 
 ## 1. Summary of Testing Activities
 A complete testing effort was executed on the Vehicle Rental System. Testing utilized the Test Pyramid approach:

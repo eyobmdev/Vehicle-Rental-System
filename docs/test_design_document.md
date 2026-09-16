@@ -1,7 +1,6 @@
 # Test Design Document
 
 **Course:** Software Testing and Validation  
-**Group members:** Eyob Mulugeta (ATE/4778/14); Afomia Birhanu (ATE/2368/14)
 
 ## 1. Equivalence Partitioning (EP) and Boundary Value Analysis (BVA)
 
