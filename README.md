@@ -4,7 +4,7 @@
 
 We built a **Vehicle Rental System** using Django (Python). The application allows users to view available vehicles and submit a booking request. 
 
-We specifically chose this domain because it naturally contains all the elements your teacher demanded for formal testing techniques:
+We specifically chose this domain because it naturally contains all the elements that demanded for formal testing techniques:
 *   **Equivalence Partitioning (EP) & Boundary Value Analysis (BVA)**: We evaluate the customer's age (must be > 21) and the rental duration (between 1 and 30 days).
 *   **Decision Tables**: We calculate discounts based on a combination of rules (e.g., Is the user a Premium Member? Is the rental > 7 days?).
 *   **State Transitions**: A vehicle booking moves through a strict lifecycle (`REQUESTED` -> `CONFIRMED` -> `ACTIVE` -> `RETURNED`).
