@@ -1,16 +1,5 @@
 # Vehicle Rental System: Software Testing and Validation Final Project
 
-## Group Members
-
-| Member | Student ID | Main responsibilities |
-|---|---|---|
-| Eyob Mulugeta | ATE/4778/14 | Business logic, unit/integration tests, CI configuration |
-| Afomia Birhanu | ATE/2368/14 | Formal test design, Playwright system/UAT tests, defect and report documentation |
-
-This README describes the application, testing evidence, and reproducible commands for the final project.
-
----
-
 ## 1. What We Built
 
 We built a **Vehicle Rental System** using Django (Python). The application allows users to view available vehicles and submit a booking request. 
