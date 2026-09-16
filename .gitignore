@@ -1,0 +1,66 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+# Test and coverage output
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+junit.xml
+.pytest_cache/
+test-results/
+playwright-report/
+blob-report/
+
+# Local databases and runtime files
+*.sqlite3
+*.sqlite3-journal
+*.log
+
+# Django generated files
+staticfiles/
+media/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.secret
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+.DS_Store
+
+# Operating-system metadata
+.Trashes
+Thumbs.db
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+answer/

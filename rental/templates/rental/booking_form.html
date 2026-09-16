@@ -1,0 +1,149 @@
+{% extends 'rental/base.html' %}
+
+{% block content %}
+<div class="glass-panel" style="max-width: 600px; margin: 0 auto;">
+    <h2>Book {{ vehicle.make }} {{ vehicle.model }}</h2>
+    
+    {% if error %}
+        <p class="error-msg" id="error-message">{{ error }}</p>
+    {% endif %}
+
+    <style>
+        .error-msg {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #f87171;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h3 {
+            margin-top: 0;
+            color: #94a3b8;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        label {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"], 
+        input[type="number"], 
+        input[type="date"] {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus, 
+        input[type="number"]:focus, 
+        input[type="date"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .btn-submit {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-submit:hover {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <form method="post" id="booking-form">
+        {% csrf_token %}
+        
+        <div class="form-section">
+            <h3>Customer Details</h3>
+            <div class="form-group">
+                <label for="customer_name">Full Name</label>
+                <input type="text" name="customer_name" id="customer_name" required placeholder="Jane Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="customer_age">Age</label>
+                <input type="number" name="customer_age" id="customer_age" required min="18" placeholder="25">
+            </div>
+            
+            <label class="checkbox-group" for="is_premium">
+                <input type="checkbox" name="is_premium" id="is_premium"> 
+                <span>Premium Member (Eligible for discounts)</span>
+            </label>
+        </div>
+
+        <div class="form-section">
+            <h3>Rental Period</h3>
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" name="start_date" id="start_date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="end_date">End Date</label>
+                <input type="date" name="end_date" id="end_date" required>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn-submit" id="submit-booking">Confirm Booking</button>
+    </form>
+</div>
+{% endblock %}

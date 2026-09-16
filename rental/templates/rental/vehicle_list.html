@@ -1,0 +1,117 @@
+{% extends 'rental/base.html' %}
+
+{% block content %}
+<div class="glass-panel">
+    <h2>Available Vehicles</h2>
+    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-top: 20px;
+        }
+        
+        th {
+            text-align: left;
+            padding: 10px 20px;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tbody tr {
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.2s ease;
+        }
+        
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.01);
+        }
+        
+        td {
+            padding: 20px;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        td:first-child {
+            border-left: 1px solid var(--card-border);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        td:last-child {
+            border-right: 1px solid var(--card-border);
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+        
+        .price {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #4ade80;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Daily Rate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.make }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td class="price">${{ vehicle.daily_rate }}</td>
+                <td>
+                    {% if vehicle.is_available %}
+                        <a href="{% url 'book_vehicle' vehicle.id %}" class="btn" id="book-btn-{{ vehicle.id }}">Book Now</a>
+                    {% else %}
+                        <span style="color: #f87171;">Not Available</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-state">No vehicles available at this time.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
