@@ -18,7 +18,7 @@ pipeline {
                 python3 -m venv venv
                 . venv/bin/activate
                 pip install -r requirements.txt
-                playwright install --with-deps chromium
+                playwright install chromium
                 '''
             }
         }
@@ -35,8 +35,19 @@ pipeline {
     
     post {
         always {
-            junit 'junit.xml'
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'htmlcov', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: 'Coverage'])
+            // allowEmptyResults prevents the pipeline from failing just because no report was produced
+            junit allowEmptyResults: true, testResults: 'junit.xml'
+            
+            // allowMissing: true so a failed setup stage doesn’t break the post action
+            publishHTML([
+                allowMissing: true,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'htmlcov',
+                reportFiles: 'index.html',
+                reportName: 'HTML Report',
+                reportTitles: 'Coverage'
+            ])
         }
         success {
             echo 'Pipeline completed successfully.'
